@@ -1,5 +1,5 @@
 ## File with Credentials
-env.properties
+src/main/resources/env.properties
 
 /target/
 .gradle
