@@ -1,7 +1,11 @@
 package com.cedacri.vaadinlogistics.views;
 
 import com.cedacri.vaadinlogistics.views.broker.BrokerView;
+import com.cedacri.vaadinlogistics.views.carrier.CarrierView;
+import com.cedacri.vaadinlogistics.views.customer.CustomerView;
+import com.cedacri.vaadinlogistics.views.dispatcher.DispatcherView;
 import com.cedacri.vaadinlogistics.views.helloworld.HelloWorldView;
+import com.cedacri.vaadinlogistics.views.vehicle.VehicleView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -57,6 +61,23 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem(
             "Broker",
             BrokerView.class
+        ));
+
+        nav.addItem(new SideNavItem(
+                "Carrier",
+                CarrierView.class
+        ));
+        nav.addItem(new SideNavItem(
+                "Customer",
+                CustomerView.class
+        ));
+        nav.addItem(new SideNavItem(
+                "Dispatcher",
+                DispatcherView.class
+        ));
+        nav.addItem(new SideNavItem(
+                "Vehicles",
+                VehicleView.class
         ));
 
         return nav;

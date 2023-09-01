@@ -8,6 +8,9 @@ import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +23,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Vehicle extends BaseEntity {
 
+    @NotNull
+    @NotBlank
     private String vehicleNr;
+    @NotNull
+    @NotBlank
     private String currentCityLocation;
-//    @Enumerated(EnumType.STRING)
+    @NotNull
     private VehicleStatus currentStatus;
 
     @OneToMany(

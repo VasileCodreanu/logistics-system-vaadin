@@ -9,6 +9,11 @@ import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +26,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Carrier extends BaseEntity {
 
+    @NotNull
+    @NotBlank
+//    @Min(3)
     private String name;
+    @Email
+    @NotNull
+    private String email;
     @Embedded
     private Address address;
 

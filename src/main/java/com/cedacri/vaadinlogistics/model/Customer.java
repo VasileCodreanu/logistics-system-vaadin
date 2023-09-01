@@ -9,6 +9,9 @@ import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +24,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Customer extends BaseEntity {
 
+    @NotNull
+    @NotBlank
     private String name;
+    @NotNull
+    @NotBlank//Lob
     private String directions;
+    @NotNull
+    @NotBlank
     private String proneNr;
+    @NotNull
+    @NotBlank
     private String email;
     @Embedded
     private Address address;
@@ -43,41 +54,15 @@ public class Customer extends BaseEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
-
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Customer customer = (Customer) o;
-
-        if (!Objects.equals(name, customer.name)) {
-            return false;
-        }
-        if (!Objects.equals(directions, customer.directions)) {
-            return false;
-        }
-        if (!Objects.equals(proneNr, customer.proneNr)) {
-            return false;
-        }
-        if (!Objects.equals(email, customer.email)) {
-            return false;
-        }
-      return Objects.equals(address, customer.address);
+        return Objects.equals(name, customer.name) && Objects.equals(directions, customer.directions) && Objects.equals(proneNr, customer.proneNr) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address);
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (directions != null ? directions.hashCode() : 0);
-        result = 31 * result + (proneNr != null ? proneNr.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        return result;
+        return Objects.hash(super.hashCode(), name, directions, proneNr, email, address);
     }
 }

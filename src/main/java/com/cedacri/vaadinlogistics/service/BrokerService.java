@@ -6,18 +6,16 @@ import com.cedacri.vaadinlogistics.service.genericService.GenericService;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.vaadin.crudui.crud.CrudListener;
 
 @Service
-public class BrokerService implements CrudListener<Broker>, GenericService<Broker> {
+@RequiredArgsConstructor
+public class BrokerService {
 
     private final BrokerRepository repository;
-
-
-    public BrokerService(BrokerRepository repository) {
-        this.repository = repository;
-    }
 
     public Broker save(Broker entity){//carrierDto to Carrier
         return repository.save(entity);
@@ -36,25 +34,11 @@ public class BrokerService implements CrudListener<Broker>, GenericService<Broke
 
     public Broker update(Broker entity) {
         Broker entityById = this.getById(entity.getId());
-        entity.getOrderList().addAll(entityById.getOrderList());
+//        entity.getOrderList().addAll(entityById.getOrderList());
         return repository.save(entity);
     }
     public void deleteById(Long id) {
         repository.deleteById(id);
-    }
-
-    @Override
-    public void delete(Broker broker) {
-        this.deleteById(broker.getId());
-    }
-    @Override
-    public Collection<Broker> findAll() {
-        return this.getAll();
-    }
-
-    @Override
-    public Broker add(Broker broker) {
-        return this.save(broker);
     }
 
 }

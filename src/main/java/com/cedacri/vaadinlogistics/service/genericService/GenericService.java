@@ -1,8 +1,11 @@
 package com.cedacri.vaadinlogistics.service.genericService;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.List;
 
+@Component
 public interface GenericService<T extends Serializable> {
 
     T getById(final Long id);

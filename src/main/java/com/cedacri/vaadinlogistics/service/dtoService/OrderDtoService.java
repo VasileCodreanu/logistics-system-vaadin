@@ -13,9 +13,9 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-public class OrderDtoService {
+//@Service
+//@RequiredArgsConstructor
+//public class OrderDtoService {
 
 //  private final OrderManagerService manager;
 //  private final DispatcherService dispatcherService;
@@ -23,7 +23,7 @@ public class OrderDtoService {
 //  private final BrokerService brokerService;
 //  private final VehicleService vehicleService;
 //  private final CustomerService customerService;
-//
+
 //  public OrderDtoResponse save(OrderDtoRequest dto) {
 //    Dispatcher dispatcher = dispatcherService.getById(dto.getDispatcherId());
 //    Carrier carrier   = carrierService.getById(dto.getCarrierId());
@@ -114,4 +114,4 @@ public class OrderDtoService {
 //        .orderStatus(o.getOrderStatus())
 //        .build();
 //  }
-}
+//}

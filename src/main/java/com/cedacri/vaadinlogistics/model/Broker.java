@@ -1,8 +1,6 @@
 package com.cedacri.vaadinlogistics.model;
 
 import com.cedacri.vaadinlogistics.model.baseEntity.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -10,10 +8,11 @@ import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Entity
 @Getter
@@ -22,10 +21,21 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Broker extends BaseEntity {
 
-    private String brokerName;
+    @NotNull
+    @NotBlank
+    private String name;
+
+    @Email
+    @NotNull
+    private String email;
+
+    @NotNull
+    @NotBlank
     private String phoneNr;
+
 //    @Enumerated(EnumType.STRING)
-    private BrokerRating brokerRating;
+    @NotNull
+    private BrokerRating rating;
 
     @Embedded
     private Address address;
@@ -41,6 +51,7 @@ public class Broker extends BaseEntity {
         orderList.add(order);
         order.setBroker(this);
     }
+
     public void removeOrder(Order order) {
         orderList.remove(order);
         order.setBroker(null);//relly on orphan removal
@@ -52,37 +63,15 @@ public class Broker extends BaseEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
-
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Broker broker = (Broker) o;
-
-        if (!Objects.equals(brokerName, broker.brokerName)) {
-            return false;
-        }
-        if (!Objects.equals(phoneNr, broker.phoneNr)) {
-            return false;
-        }
-        if (brokerRating != broker.brokerRating) {
-            return false;
-        }
-      return Objects.equals(address, broker.address);
+        return Objects.equals(name, broker.name) && Objects.equals(email, broker.email) && Objects.equals(phoneNr, broker.phoneNr) && rating == broker.rating && Objects.equals(address, broker.address);
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (brokerName != null ? brokerName.hashCode() : 0);
-        result = 31 * result + (phoneNr != null ? phoneNr.hashCode() : 0);
-        result = 31 * result + (brokerRating != null ? brokerRating.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        return result;
+        return Objects.hash(super.hashCode(), name, email, phoneNr, rating, address);
     }
 }
