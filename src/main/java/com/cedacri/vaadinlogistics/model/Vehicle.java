@@ -1,7 +1,6 @@
 package com.cedacri.vaadinlogistics.model;
 
 import com.cedacri.vaadinlogistics.model.baseEntity.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;

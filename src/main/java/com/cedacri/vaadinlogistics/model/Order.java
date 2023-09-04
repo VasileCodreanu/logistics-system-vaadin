@@ -3,10 +3,8 @@ package com.cedacri.vaadinlogistics.model;
 import com.cedacri.vaadinlogistics.model.baseEntity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,7 +17,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
-@Builder
 @Table(name = "order_table" )
 public class Order extends BaseEntity {
 
@@ -36,7 +33,7 @@ public class Order extends BaseEntity {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "broker_id", referencedColumnName = "ID")
+    @JoinColumn(name = "broker_id", referencedColumnName = "id")
     private Broker broker;
 
     @NotNull

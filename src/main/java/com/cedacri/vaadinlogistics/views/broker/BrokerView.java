@@ -61,7 +61,7 @@ public class BrokerView extends VerticalLayout {
 
             @Override
             public void delete(Broker entity) {
-                backend.deleteById(entity.getId());;
+                backend.deleteById(entity.getId());
             }
         });
     }

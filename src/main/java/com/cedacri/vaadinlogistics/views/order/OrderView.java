@@ -105,7 +105,7 @@ public class OrderView extends VerticalLayout{
 
                 @Override
                 public void delete(Order entity) {
-                    backend.deleteById(entity.getId());;
+                    backend.deleteById(entity.getId());
                 }
             });
         }

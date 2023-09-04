@@ -5,8 +5,6 @@ import com.cedacri.vaadinlogistics.repository.OrderRepository;
 import com.cedacri.vaadinlogistics.service.genericService.GenericService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +32,6 @@ public class OrderService implements GenericService<Order> {
 
     //@Transactional
     public Order update(Order entity) {
-        Order entityById = this.getById(entity.getId());
         return repository.save(entity);
     }
 
