@@ -13,7 +13,6 @@ import org.vaadin.crudui.crud.CrudListener;
 import org.vaadin.crudui.crud.CrudOperation;
 import org.vaadin.crudui.crud.impl.GridCrud;
 
-import java.awt.*;
 import java.util.Collection;
 
 @PageTitle("Customer")
@@ -30,18 +29,19 @@ public class CustomerView extends VerticalLayout{
         gridConfiguration();
         formConfiguration();
         setCrudListener(service);
-        configureFilter();
+        configureFilter(service);
         add(filterText, crud);
     }
 
-    private void configureFilter() {
+    private void configureFilter(CustomerService service) {
         filterText.setPlaceholder("Filter by name..");
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
-        filterText.addValueChangeListener(e -> updateView());
+        filterText.addValueChangeListener(e -> updateView(service));
     }
 
-    private void updateView() {
+    private void updateView(CustomerService service) {
+        crud.getGrid().setItems(service.findByName(filterText.getValue()));
     }
 
     private void gridConfiguration() {

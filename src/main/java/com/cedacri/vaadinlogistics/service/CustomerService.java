@@ -2,7 +2,7 @@ package com.cedacri.vaadinlogistics.service;
 
 
 import com.cedacri.vaadinlogistics.model.Customer;
-import com.cedacri.vaadinlogistics.repository.ReceiverRepository;
+import com.cedacri.vaadinlogistics.repository.CustomerRepository;
 import com.cedacri.vaadinlogistics.service.genericService.GenericService;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService implements GenericService<Customer> {
-    private final ReceiverRepository repository;
+    private final CustomerRepository repository;
 
-    public CustomerService(ReceiverRepository repository) {
+    public CustomerService(CustomerRepository repository) {
         this.repository = repository;
     }
 
@@ -43,4 +43,10 @@ public class CustomerService implements GenericService<Customer> {
         repository.deleteById(id);
     }
 
+    public List<Customer> findByName(String filterText) {
+        if(null == filterText || filterText.isEmpty())
+            return this.getAll();
+        else
+            return repository.findByName(filterText);
+    }
 }

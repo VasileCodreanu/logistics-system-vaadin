@@ -1,10 +1,7 @@
 package com.cedacri.vaadinlogistics.views.broker;
 
 import com.cedacri.vaadinlogistics.model.Broker;
-import com.cedacri.vaadinlogistics.model.Carrier;
 import com.cedacri.vaadinlogistics.service.BrokerService;
-import com.cedacri.vaadinlogistics.service.CarrierService;
-import com.cedacri.vaadinlogistics.service.genericService.GenericService;
 import com.cedacri.vaadinlogistics.views.MainLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -39,19 +36,10 @@ public class BrokerView extends VerticalLayout {
     }
 
     private void formConfiguration() {
-        crud.getGrid().setColumns("name", "email", "phoneNr", "rating", "address");
+        crud.getGrid().setColumns("name", "email", "phoneNr", "rating");
         crud.getCrudFormFactory().setVisibleProperties(
                 CrudOperation.ADD,
                 "name", "email", "phoneNr", "rating");
-//        crud.getCrudFormFactory().setFieldProvider("address",
-//                new ComboBoxProvider<>(service.findAll().stream().map(Broker::getAddress).toList()));
-//        crud.getCrudFormFactory().setFieldProvider("groups",
-//                new CheckBoxGroupProvider<>(groupService.findAll()));
-//        crud.getCrudFormFactory().setFieldProvider("groups",
-//                new CheckBoxGroupProvider<>("Groups", groupService.findAll(), Group::getName));
-//        crud.getCrudFormFactory().setFieldProvider("mainGroup",
-//                new ComboBoxProvider<>("Main Group", groupService.findAll(), new TextRenderer<>(Group::getName), Group::getName));
-
     }
 
     private void setCrudListener(BrokerService backend) {

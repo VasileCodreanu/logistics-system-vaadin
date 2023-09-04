@@ -44,7 +44,6 @@ public class Broker extends BaseEntity {
         mappedBy = "broker",
         cascade = CascadeType.ALL,
         orphanRemoval = true)
-
     private Set<Order> orderList = new HashSet<>();
 
     public void addOrder(Order order) {

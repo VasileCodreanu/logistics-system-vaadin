@@ -5,6 +5,7 @@ import com.cedacri.vaadinlogistics.views.carrier.CarrierView;
 import com.cedacri.vaadinlogistics.views.customer.CustomerView;
 import com.cedacri.vaadinlogistics.views.dispatcher.DispatcherView;
 import com.cedacri.vaadinlogistics.views.helloworld.HelloWorldView;
+import com.cedacri.vaadinlogistics.views.order.OrderView;
 import com.cedacri.vaadinlogistics.views.vehicle.VehicleView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -53,6 +54,11 @@ public class MainLayout extends AppLayout {
 
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
+
+        nav.addItem(new SideNavItem(
+                "Orders",
+                OrderView.class
+        ));
 
         nav.addItem(new SideNavItem(
             "Hello World",
