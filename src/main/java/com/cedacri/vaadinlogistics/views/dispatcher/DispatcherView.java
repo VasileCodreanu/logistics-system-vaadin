@@ -61,7 +61,7 @@ public class DispatcherView extends VerticalLayout {
 
                 @Override
                 public void delete(Dispatcher entity) {
-                    backend.deleteById(entity.getId());;
+                    backend.deleteById(entity.getId());
                 }
             });
         }

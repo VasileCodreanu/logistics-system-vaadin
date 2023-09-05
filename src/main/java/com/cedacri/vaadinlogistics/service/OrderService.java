@@ -30,7 +30,6 @@ public class OrderService implements GenericService<Order> {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("No Order with id="+id));
     }
 
-    //@Transactional
     public Order update(Order entity) {
         return repository.save(entity);
     }

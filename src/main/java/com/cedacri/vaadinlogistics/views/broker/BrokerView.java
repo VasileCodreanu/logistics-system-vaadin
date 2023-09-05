@@ -31,7 +31,7 @@ public class BrokerView extends VerticalLayout {
         crud.addClassName("broker-grid");
         crud.getGrid().setColumnReorderingAllowed(true);
         crud.getGrid().setPageSize(50);
-        crud.getCrudFormFactory().setUseBeanValidation(true);//java Bean Validation
+        crud.getCrudFormFactory().setUseBeanValidation(true);
         crud.setSizeFull();
     }
 

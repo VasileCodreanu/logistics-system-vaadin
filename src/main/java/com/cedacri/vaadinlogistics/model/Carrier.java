@@ -1,7 +1,6 @@
 package com.cedacri.vaadinlogistics.model;
 
 import com.cedacri.vaadinlogistics.model.baseEntity.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -11,7 +10,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -28,7 +26,6 @@ public class Carrier extends BaseEntity {
 
     @NotNull
     @NotBlank
-//    @Min(3)
     private String name;
     @Email
     @NotNull

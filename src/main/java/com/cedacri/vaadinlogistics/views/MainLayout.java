@@ -4,7 +4,6 @@ import com.cedacri.vaadinlogistics.views.broker.BrokerView;
 import com.cedacri.vaadinlogistics.views.carrier.CarrierView;
 import com.cedacri.vaadinlogistics.views.customer.CustomerView;
 import com.cedacri.vaadinlogistics.views.dispatcher.DispatcherView;
-import com.cedacri.vaadinlogistics.views.helloworld.HelloWorldView;
 import com.cedacri.vaadinlogistics.views.order.OrderView;
 import com.cedacri.vaadinlogistics.views.vehicle.VehicleView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -60,10 +59,6 @@ public class MainLayout extends AppLayout {
                 OrderView.class
         ));
 
-        nav.addItem(new SideNavItem(
-            "Hello World",
-            HelloWorldView.class
-        ));
         nav.addItem(new SideNavItem(
             "Broker",
             BrokerView.class

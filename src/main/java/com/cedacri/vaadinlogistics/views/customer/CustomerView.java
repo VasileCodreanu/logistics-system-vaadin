@@ -58,19 +58,9 @@ public class CustomerView extends VerticalLayout{
                     Address address = o.getAddress();
                     return null ==  address ? "-": address.getAddress();
         }).setHeader("address").setKey("addre");
-//        crud.getGrid().addColumn(o -> o.getAddress().getCity()).setHeader("city").setKey("ci");
         crud.getCrudFormFactory().setVisibleProperties(
                 CrudOperation.ADD,
                 "name", "email", "proneNr", "directions", "city");
-//        crud.getCrudFormFactory().setFieldProvider("address",
-//                new ComboBoxProvider<>(service.findAll().stream().map(Broker::getAddress).toList()));
-//        crud.getCrudFormFactory().setFieldProvider("groups",
-//                new CheckBoxGroupProvider<>(groupService.findAll()));
-//        crud.getCrudFormFactory().setFieldProvider("groups",
-//                new CheckBoxGroupProvider<>("Groups", groupService.findAll(), Group::getName));
-//        crud.getCrudFormFactory().setFieldProvider("mainGroup",
-//                new ComboBoxProvider<>("Main Group", groupService.findAll(), new TextRenderer<>(Group::getName), Group::getName));
-
     }
 
     private void setCrudListener(CustomerService backend) {
@@ -92,7 +82,7 @@ public class CustomerView extends VerticalLayout{
 
             @Override
             public void delete(Customer entity) {
-                backend.deleteById(entity.getId());;
+                backend.deleteById(entity.getId());
             }
         });
     }

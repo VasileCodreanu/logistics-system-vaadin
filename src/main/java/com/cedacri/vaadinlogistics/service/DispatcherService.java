@@ -33,8 +33,6 @@ public class DispatcherService implements GenericService<Dispatcher> {
     }
 
     public Dispatcher update(Dispatcher entity) {
-        Dispatcher entityById = this.getById(entity.getId());
-//        entity.getOrderList().addAll(entityById.getOrderList());
         return repository.save(entity);
     }
 

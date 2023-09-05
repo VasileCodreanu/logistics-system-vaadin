@@ -28,27 +28,27 @@ public class Order extends BaseEntity {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     //@MapsId because we want the child table row to share the Primary Key with its parent table row meaning that the Primary Key is also a Foreign Key back to the parent table record.
-    @JoinColumn(name = "carrier_id", referencedColumnName = "ID")
+    @JoinColumn(name = "carrier_id")
     private Carrier carrier;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "broker_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "broker_id")
     private Broker broker;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehicle_id", referencedColumnName = "ID")
+    @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sender_id", referencedColumnName = "ID")
+    @JoinColumn(name = "sender_id")
     private Customer sender;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "receiver_id", referencedColumnName = "ID")
+    @JoinColumn(name = "receiver_id")
     private Customer receiver;
 
     @NotNull
@@ -69,7 +69,6 @@ public class Order extends BaseEntity {
     public enum OrderStatus {
         DELIVERED, PROCESSING, CANCELLED
     }
-
 
     @Override
     public boolean equals(Object o) {

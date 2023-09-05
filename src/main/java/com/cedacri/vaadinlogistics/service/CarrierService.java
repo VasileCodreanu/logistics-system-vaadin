@@ -31,8 +31,6 @@ public class CarrierService implements GenericService<Carrier> {
     }
 
     public Carrier update(Carrier entity) {
-        Carrier entityById = this.getById(entity.getId());
-//        entity.getOrderList().addAll(entityById.getOrderList());
         return repository.save(entity);
     }
 

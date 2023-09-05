@@ -34,8 +34,6 @@ public class VehicleService implements GenericService<Vehicle> {
     }
 
     public Vehicle update(Vehicle entity) {
-        Vehicle entityById = this.getById(entity.getId());
-//        entity.getOrderList().addAll(entityById.getOrderList());
         return repository.save(entity);
     }
 

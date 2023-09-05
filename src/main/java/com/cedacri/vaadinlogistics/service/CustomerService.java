@@ -33,9 +33,6 @@ public class CustomerService implements GenericService<Customer> {
     }
 
     public Customer update(Customer entity) {
-        Customer entityById = this.getById(entity.getId());
-//        entity.getReceiverOrders().addAll(entityById.getReceiverOrders());
-//        entity.getSenderOrders().addAll(entityById.getSenderOrders());
         return repository.save(entity);
     }
 
