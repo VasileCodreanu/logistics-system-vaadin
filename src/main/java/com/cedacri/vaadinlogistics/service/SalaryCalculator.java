@@ -19,46 +19,26 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class SalaryCalculator {
 
-    private final DispatcherRepository dispatcherRepository;
-    private final VehicleRepository vehicleRepository;
+  private final DispatcherRepository dispatcherRepository;
 
-    public BigDecimal calculateSalary(BaseEntity employee){//Employee emp
-        return switch (employee){
-            case Dispatcher dispatcher -> calculateDispatcherSalary(dispatcher);
-            case Vehicle vehicle -> calculateDriverSalary(vehicle);
-            default -> {
-                yield new BigDecimal("0");
-            }
-        };
-    }
+  public BigDecimal calculateSalary(Dispatcher dispatcher) {//Employee emp
+    return calculateDispatcherSalary(dispatcher);
+  }
 
-    private BigDecimal calculateDispatcherSalary(Dispatcher dispatcher){
+  private BigDecimal calculateDispatcherSalary(Dispatcher dispatcher) {
 
-        BigDecimal percentageDispatcherGets = new BigDecimal("0.025");
+    BigDecimal percentageDispatcherGets = new BigDecimal("0.025");
 
-        List<Order> ordersByDispatcherId = dispatcherRepository.getOrdersByDispatcherId(dispatcher.getId());
+    List<Order> ordersDoneByDispatcher = dispatcherRepository.getOrdersByDispatcherId(
+        dispatcher.getId());
 
-        BigDecimal totalMoneyPaidForOrders = ordersByDispatcherId
-                .stream()
-                .filter(order -> Objects.equals(order.getOrderStatus().toString(), "DELIVERED"))
-                .map(Order::getAmountToBePaid)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    BigDecimal totalMoneyPaidForOrders = ordersDoneByDispatcher
+        .stream()
+        .filter(order -> Objects.equals(order.getOrderStatus().toString(), "DELIVERED"))
+        .map(Order::getAmountToBePaid)
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return totalMoneyPaidForOrders.multiply(percentageDispatcherGets, new MathContext(2));
-    }
-
-    private BigDecimal calculateDriverSalary(Vehicle vehicle){
-
-        BigDecimal percentageVehicleGets = new BigDecimal("0.9");
-
-        List<Order> ordersDoneByVehicle = vehicleRepository.getOrdersDoneByVehicle(vehicle.getId());
-        BigDecimal totalMoneyPaidForOrders = ordersDoneByVehicle
-                .stream()
-                .filter(order -> Objects.equals(order.getOrderStatus().toString(), "DELIVERED"))
-                .map(Order::getAmountToBePaid)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        return totalMoneyPaidForOrders.multiply(percentageVehicleGets, new MathContext(2));
-    }
-
+    return totalMoneyPaidForOrders.multiply(percentageDispatcherGets,
+        new MathContext(7));
+  }
 }
