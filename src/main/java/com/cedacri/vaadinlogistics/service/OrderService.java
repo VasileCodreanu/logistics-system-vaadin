@@ -2,7 +2,7 @@ package com.cedacri.vaadinlogistics.service;
 
 import com.cedacri.vaadinlogistics.model.Order;
 import com.cedacri.vaadinlogistics.repository.OrderRepository;
-import com.cedacri.vaadinlogistics.service.genericService.GenericService;
+import com.cedacri.vaadinlogistics.service.genericCrudService.GenericService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;

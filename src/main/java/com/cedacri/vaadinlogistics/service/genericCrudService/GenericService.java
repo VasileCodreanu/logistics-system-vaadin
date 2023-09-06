@@ -1,4 +1,4 @@
-package com.cedacri.vaadinlogistics.service.genericService;
+package com.cedacri.vaadinlogistics.service.genericCrudService;
 
 import org.springframework.stereotype.Component;
 

@@ -7,6 +7,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import org.vaadin.crudui.crud.CrudListener;
 import org.vaadin.crudui.crud.CrudOperation;
 import org.vaadin.crudui.crud.impl.GridCrud;
@@ -16,6 +17,7 @@ import java.util.Collection;
 
 @PageTitle("Order")
 @Route(value = "order", layout = MainLayout.class)
+@RouteAlias(value = "", layout = MainLayout.class)
 public class OrderView extends VerticalLayout{
         GridCrud<Order> crud;
 
@@ -23,7 +25,6 @@ public class OrderView extends VerticalLayout{
                 OrderService orderService, BrokerService brokerService,
                 CarrierService carrierService, CustomerService customerService,
                 DispatcherService dispatcherService, VehicleService vehicleService
-
         ) {
             crud = new GridCrud<>(Order.class);
 

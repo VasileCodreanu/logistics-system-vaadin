@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
@@ -30,6 +31,8 @@ public class Employee extends BaseEntity{
     @NotNull
     @NotBlank
     private String phoneNr;
+
+    private BigDecimal salary;
 
     @Override
     public boolean equals(Object o) {

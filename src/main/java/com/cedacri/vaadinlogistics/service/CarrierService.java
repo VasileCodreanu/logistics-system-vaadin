@@ -2,7 +2,7 @@ package com.cedacri.vaadinlogistics.service;
 
 import com.cedacri.vaadinlogistics.model.Carrier;
 import com.cedacri.vaadinlogistics.repository.CarrierRepository;
-import com.cedacri.vaadinlogistics.service.genericService.GenericService;
+import com.cedacri.vaadinlogistics.service.genericCrudService.GenericService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
